@@ -1,7 +1,8 @@
 import { MetalOptions } from "./MetalOptions.js"
 import { SizeOptions } from "./SizeOptions.js"
 import { StyleOptions } from "./StyleOptions.js"
-import { orders } from "./orders.js"
+import { Orders } from "./orders.js"
+import { saveOrder } from "./saveSubmissionComponents.js"
 
 const container = document.querySelector("#container")
 
@@ -9,7 +10,8 @@ const render = async () => {
     const MetalOptionsHTML = await MetalOptions()
     const SizeOptionsHTML = await SizeOptions()
     const StyleOptionsHTML = await StyleOptions()
-    const ordersHTML = await orders()
+    const ordersHTML = await Orders()
+    const buttonHTML = await saveOrder()
 
     const composedHTML = `
         <h1>Kneel Diamonds</h1>
@@ -28,6 +30,8 @@ const render = async () => {
             <section class="choices__styles options">
                 <h2>Styles</h2>
                 ${StyleOptionsHTML}
+                <br>
+                <div>${buttonHTML}</div>
             </section>
         </article>
 
@@ -43,5 +47,7 @@ const render = async () => {
 
     container.innerHTML = composedHTML
 }
+
+document.addEventListener("newSubmissionCreated", render)
 
 render()

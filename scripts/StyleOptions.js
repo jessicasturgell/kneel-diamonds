@@ -1,6 +1,10 @@
+import { setStyleId } from "./transientState.js"
+
 export const StyleOptions = async () => {
     const response = await fetch("http://localhost:8088/styles")
     const styles = await response.json()
+
+    document.addEventListener("change", handleOwnershipChange)
 
 // .MAP METHOD:
     let StyleOptionsHTML = ""
@@ -12,6 +16,13 @@ export const StyleOptions = async () => {
 
     StyleOptionsHTML += divStringArray.join("")
     return StyleOptionsHTML
+}
+
+const handleOwnershipChange = (changeEvent) => {
+    if (changeEvent.target.name === "style") {
+        const convertedToInteger = parseInt(changeEvent.target.value)
+        setStyleId(convertedToInteger)
+    }
 }
 
 // FOR/OF METHOD:
