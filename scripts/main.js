@@ -1,6 +1,7 @@
 import { MetalOptions } from "./MetalOptions.js"
 import { SizeOptions } from "./SizeOptions.js"
 import { StyleOptions } from "./StyleOptions.js"
+import { orders } from "./orders.js"
 
 const container = document.querySelector("#container")
 
@@ -8,6 +9,7 @@ const render = async () => {
     const MetalOptionsHTML = await MetalOptions()
     const SizeOptionsHTML = await SizeOptions()
     const StyleOptionsHTML = await StyleOptions()
+    const ordersHTML = await orders()
 
     const composedHTML = `
         <h1>Kneel Diamonds</h1>
@@ -35,7 +37,7 @@ const render = async () => {
 
         <article class="customOrders">
             <h2>Custom Jewelry Orders</h2>
-
+            ${ordersHTML}
         </article>
     `
 
