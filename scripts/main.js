@@ -15,7 +15,6 @@ const render = async () => {
 
     const composedHTML = `
         <h1>Kneel Diamonds</h1>
-
         <article class="choices">
             <section class="choices__metals options">
                 <h2>Metals</h2>
