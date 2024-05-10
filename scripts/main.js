@@ -3,6 +3,7 @@ import { SizeOptions } from "./SizeOptions.js"
 import { StyleOptions } from "./StyleOptions.js"
 import { Orders } from "./orders.js"
 import { saveOrder } from "./saveSubmissionComponents.js"
+import { typeOptions } from "./typeOptions.js"
 
 const container = document.querySelector("#container")
 
@@ -12,6 +13,7 @@ const render = async () => {
     const StyleOptionsHTML = await StyleOptions()
     const ordersHTML = await Orders()
     const buttonHTML = await saveOrder()
+    const typeOptionsHTML = await typeOptions()
 
     const composedHTML = `
         <h1>Kneel Diamonds</h1>
@@ -29,13 +31,16 @@ const render = async () => {
             <section class="choices__styles options">
                 <h2>Styles</h2>
                 ${StyleOptionsHTML}
-                <br>
-                <div>${buttonHTML}</div>
+            </section>
+            
+            <section class="choices__type options">
+                <h2>Types</h2>
+                ${typeOptionsHTML}
             </section>
         </article>
-
         <article class="order">
-
+        <br>
+        <div>${buttonHTML}</div>
         </article>
 
         <article class="customOrders">
